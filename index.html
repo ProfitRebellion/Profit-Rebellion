@@ -30,8 +30,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--blue2); outline
 header { position: sticky; top: 0; z-index: 10; background: rgba(7,9,13,.86); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); }
 .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 850; letter-spacing: -.04em; }
-.brand-mark { display: block; width: 48px; height: 48px; object-fit: contain; border-radius: 50%; flex: 0 0 auto; }
-.footer-logo { width: 76px; height: 76px; object-fit: contain; display: block; margin-bottom: 12px; }
+.brand-mark { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(37,140,255,.65); border-radius: 12px; color: var(--blue2); background: linear-gradient(145deg, rgba(37,140,255,.22), rgba(37,140,255,.03)); box-shadow: 0 0 24px rgba(37,140,255,.12); font-size: 19px; }
+.brand-logo { display: block; width: 46px; height: 40px; object-fit: contain; }
 .brand small { display: block; color: var(--muted); font-size: 10px; letter-spacing: .19em; font-weight: 700; margin-top: -3px; }
 .nav-links { display: flex; align-items: center; gap: 27px; color: #c5cede; font-size: 13px; font-weight: 650; }
 .nav-links a:hover { color: var(--blue2); }
@@ -42,6 +42,8 @@ header { position: sticky; top: 0; z-index: 10; background: rgba(7,9,13,.86); ba
 .menu-toggle { display: none; background: none; color: white; border: 1px solid var(--line); border-radius: 9px; padding: 8px 11px; font-size: 20px; }
 .hero { position: relative; padding: 100px 0 78px; overflow: hidden; }
 .hero:before { content: ""; position: absolute; width: 660px; height: 660px; right: -180px; top: -170px; border-radius: 50%; background: radial-gradient(circle, rgba(37,140,255,.17), rgba(37,140,255,.035) 38%, transparent 68%); pointer-events: none; }
+.hero:after { content: "PROFIT REBELLION"; position: absolute; left: 50%; top: 42px; transform: translateX(-50%); white-space: nowrap; font-size: clamp(42px, 10vw, 132px); font-weight: 950; letter-spacing: -.075em; color: rgba(255,255,255,.025); pointer-events: none; z-index: 0; }
+.hero-logo { display: block; width: min(100%, 650px); height: auto; margin: 0 0 26px; filter: drop-shadow(0 14px 34px rgba(37,140,255,.12)); }
 .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 64px; align-items: center; position: relative; }
 .eyebrow { display: inline-flex; align-items: center; gap: 9px; border: 1px solid rgba(37,140,255,.3); color: #a9d6ff; border-radius: 999px; padding: 7px 12px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; background: rgba(37,140,255,.07); }
 .pulse { width: 7px; height: 7px; border-radius: 50%; background: #43a0ff; box-shadow: 0 0 0 5px rgba(67,160,255,.12); }
@@ -109,6 +111,16 @@ h2 { font-size: clamp(30px,4vw,45px); letter-spacing: -.05em; line-height: 1.12;
 .price-foot { font-size: 11px; color: #8794a8; margin-top: 17px; }
 .telegram-box { display: flex; justify-content: space-between; align-items: center; gap: 35px; padding: 36px; border-radius: 19px; background: linear-gradient(115deg, #0f1d2e, #0b1018 72%); border: 1px solid rgba(37,140,255,.28); }
 .telegram-box p { color: var(--muted); margin: 0; max-width: 610px; font-size: 14px; }
+.market-filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 24px; }
+.market-filter { display: inline-flex; align-items: center; padding: 9px 13px; border: 1px solid rgba(37,140,255,.28); border-radius: 999px; background: rgba(37,140,255,.07); color: #b8dcff; font-size: 12px; font-weight: 800; }
+.news-card a { display: inline-flex; margin-top: 16px; color: var(--blue2); font-size: 12px; font-weight: 850; }
+.community-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+.community-preview { border: 1px solid var(--line); background: linear-gradient(145deg, #101a28, #0b1018); border-radius: 16px; padding: 23px; }
+.chat-line { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.chat-line:last-child { border-bottom: 0; }
+.chat-avatar { flex: 0 0 34px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: rgba(37,140,255,.16); color: #9ed4ff; font-weight: 900; }
+.chat-line strong { display: block; font-size: 12px; }
+.chat-line small { display: block; color: var(--muted); font-size: 11px; line-height: 1.6; }
 .faq { max-width: 850px; }
 details { border-bottom: 1px solid var(--line); padding: 20px 0; }
 summary { cursor: pointer; font-size: 14px; font-weight: 800; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
@@ -165,11 +177,11 @@ footer strong { color: #d9e2ef; }
 <header>
   <div class="wrap nav">
     <a class="brand" href="#home" aria-label="Profit Rebellion home">
-      <img class="brand-mark" src="profit-rebellion-logo.png" alt="Profit Rebellion official logo"><span>PROFIT REBELLION<small>BUILT FOR CONSISTENCY</small></span>
+      <img class="brand-logo" src="profit-rebellion-logo.png" alt="Profit Rebellion logo"><span>PROFIT REBELLION<small>BUILT FOR CONSISTENCY</small></span>
     </a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" id="menuToggle">☰</button>
     <nav class="nav-links" id="navLinks">
-      <a href="#solutions">Solutions</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+      <a href="#robots">EA Robots</a><a href="#signals">Signals</a><a href="#market-news">Market News</a><a href="#community">Community</a><a href="#pricing">Pricing</a>
       <a class="btn btn-primary" href="https://t.me/profitrebellion" target="_blank" rel="noopener">Join Telegram ↗</a>
     </nav>
   </div>
@@ -178,12 +190,14 @@ footer strong { color: #d9e2ef; }
 <section class="hero" id="home">
   <div class="wrap hero-grid">
     <div>
+      <img class="hero-logo" src="profit-rebellion-logo.png" alt="Profit Rebellion — AI trading tools and gold signals">
       <div class="eyebrow"><span class="pulse"></span> AI TRADING TOOLS & GOLD SIGNALS</div>
-      <h1>Trade with a plan.<br><span class="gradient">Not with hype.</span></h1>
+      <h1><span class="gradient">Trade with a plan.</span></h1>
       <p class="hero-copy">Meet Profit Rebellion: algorithmic Forex tools and XAUUSD signal updates designed to help traders bring more structure to their process. Clear tools. Practical information. Risk always comes first.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#pricing">Explore Plans <span>→</span></a>
-        <a class="btn btn-outline" href="https://t.me/profitrebellion" target="_blank" rel="noopener">View Telegram ↗</a>
+        <a class="btn btn-primary" href="#robots">Explore EA Robots <span>→</span></a>
+        <a class="btn btn-outline" href="#signals">Explore Signals ↗</a>
+        <a class="btn btn-outline" href="https://t.me/profitrebellion" target="_blank" rel="noopener">Telegram Community ↗</a>
       </div>
       <div class="micro-note"><span>◆</span> Built for consistency, not hype. Trading involves risk.</div>
     </div>
@@ -211,8 +225,8 @@ footer strong { color: #d9e2ef; }
   <div class="wrap">
     <div class="section-head"><div class="kicker">The Profit Rebellion edge</div><h2>Tools for a more structured trading routine.</h2><p>Choose the support that fits your workflow, whether you prefer trading software or market ideas delivered through Telegram.</p></div>
     <div class="cards">
-      <article class="card"><div class="card-icon">⌘</div><h3>AI Forex Trading Robot</h3><p>Trading software designed to help automate a rule-based approach on a compatible MetaTrader setup. Confirm platform and broker compatibility before purchasing.</p></article>
-      <article class="card"><div class="card-icon">↗</div><h3>XAUUSD Gold Signals</h3><p>Follow gold-market signal updates through Telegram, with trade levels and outcomes shown when provided by the signal service.</p></article>
+      <article class="card" id="robots"><div class="card-icon">⌘</div><h3>AI Forex Trading Robot</h3><p>Trading software designed to help automate a rule-based approach on a compatible MetaTrader setup. Confirm platform and broker compatibility before purchasing.</p><a class="btn btn-outline" href="#pricing" style="margin-top:18px">Explore EA Robots ↗</a></article>
+      <article class="card" id="signals"><div class="card-icon">↗</div><h3>XAUUSD Gold Signals</h3><p>Follow gold-market signal updates through Telegram, with trade levels and outcomes shown when provided by the signal service.</p><a class="btn btn-outline" href="https://t.me/profitrebellion" target="_blank" rel="noopener" style="margin-top:18px">Explore Signals ↗</a></article>
       <article class="card"><div class="card-icon">◉</div><h3>Simple Onboarding</h3><p>Get in touch for setup guidance, account compatibility questions, plan details and support before you get started.</p></article>
     </div>
   </div>
@@ -238,6 +252,26 @@ footer strong { color: #d9e2ef; }
 <section id="telegram">
   <div class="wrap telegram-box"><div><div class="kicker">Join the community</div><h2 style="margin-bottom:10px">Gold signals. Direct to Telegram.</h2><p>Visit the Profit Rebellion Telegram channel for XAUUSD signal updates and announcements. Signal examples on this website are illustrative and are not live trading recommendations.</p></div><a class="btn btn-primary" href="https://t.me/profitrebellion" target="_blank" rel="noopener">Open Telegram ↗</a></div>
 </section>
+<section id="market-news">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Stay informed</div><h2>Market news, across the markets.</h2><p>Explore news and analysis across forex, gold and commodities, stocks, indices, and crypto. These links open external market-news sources; a live, unified feed can be connected once a news-data provider is selected.</p></div>
+    <div class="market-filters"><span class="market-filter">FOREX</span><span class="market-filter">GOLD & COMMODITIES</span><span class="market-filter">CRYPTO</span><span class="market-filter">STOCKS</span><span class="market-filter">INDICES</span><span class="market-filter">ECONOMIC CALENDAR</span></div>
+    <div class="cards">
+      <article class="card news-card"><div class="card-icon">⌁</div><h3>Forex & Economic News</h3><p>Currency-market headlines, central-bank decisions, inflation data and events that can affect currency pairs.</p><a href="https://www.forexfactory.com/" target="_blank" rel="noopener">Open Forex Factory ↗</a></article>
+      <article class="card news-card"><div class="card-icon">◈</div><h3>Crypto & Digital Assets</h3><p>Bitcoin, altcoins, exchange developments, blockchain news and broader digital-asset coverage.</p><a href="https://www.coindesk.com/" target="_blank" rel="noopener">Read CoinDesk ↗</a></article>
+      <article class="card news-card"><div class="card-icon">▥</div><h3>Global Markets</h3><p>Browse market coverage for stocks, indices, commodities and major economic developments.</p><a href="https://www.reuters.com/markets/" target="_blank" rel="noopener">Read Reuters Markets ↗</a></article>
+    </div>
+  </div>
+</section>
+<section id="community">
+  <div class="wrap">
+    <div class="section-head"><div class="kicker">Community hub</div><h2>Connect with Profit Rebellion.</h2><p>Keep up with announcements and join the conversation through our Telegram community. The preview below is illustrative, not a feed of real member messages.</p></div>
+    <div class="community-panel">
+      <div class="community-preview"><div class="terminal-label">COMMUNITY PREVIEW · DEMO</div><div class="chat-line"><span class="chat-avatar">PR</span><div><strong>Profit Rebellion</strong><small>Welcome to the community. Share market questions respectfully and remember that trading carries risk.</small></div></div><div class="chat-line"><span class="chat-avatar">↗</span><div><strong>Market updates</strong><small>Signal announcements and market discussions are shared through the Telegram channel.</small></div></div><div class="chat-line"><span class="chat-avatar">?</span><div><strong>Need help?</strong><small>Ask about robot compatibility, pricing or setup through our official Telegram contact.</small></div></div></div>
+      <div class="contact-panel"><div class="kicker">Join the conversation</div><h3>Find us on Telegram</h3><p>Open the official Profit Rebellion Telegram link to view available posts, updates and community discussions. To show live messages directly on this website, we’ll need a compatible public channel or discussion-group setup.</p><a class="btn btn-primary" href="https://t.me/profitrebellion" target="_blank" rel="noopener">Open Telegram Community ↗</a></div>
+    </div>
+  </div>
+</section>
 <section id="faq">
   <div class="wrap">
     <div class="section-head"><div class="kicker">Questions, answered</div><h2>Before you get started.</h2><p>Read these basics and contact us if you need clarification about the software or signal service.</p></div>
@@ -259,7 +293,7 @@ footer strong { color: #d9e2ef; }
   </div>
 </section>
 </main>
-<footer><div class="wrap footer-row"><div><img class="footer-logo" src="profit-rebellion-logo.png" alt="Profit Rebellion official logo"><strong>PROFIT REBELLION</strong><br>Built for consistency, not hype.</div><div>© <span id="year">2026</span> Profit Rebellion. All rights reserved.</div><div><a href="#faq">Risk disclaimer</a> · <a href="https://t.me/profitrebellion" target="_blank" rel="noopener">Telegram ↗</a></div></div></footer>
+<footer><div class="wrap footer-row"><div><strong>PROFIT REBELLION</strong><br>Built for consistency, not hype.</div><div>© <span id="year">2026</span> Profit Rebellion. All rights reserved.</div><div><a href="#faq">Risk disclaimer</a> · <a href="https://t.me/profitrebellion" target="_blank" rel="noopener">Telegram ↗</a></div></div></footer>
 </div>
 <script>
 const toggle = document.getElementById('menuToggle');
